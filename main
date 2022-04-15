@@ -1,0 +1,13 @@
+if game.PlaceId == 662417684 then -- lucky blocks
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/kl1zyydf/hub/main/battle%20lucky", true))()
+elseif game.PlaceId == 8781849572 then -- star simulator
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/kl1zyydf/hub/main/star%20planet%20simulator", true))()
+elseif game.PlaceId == 5755487791 then -- Tower of hell Easy
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/kl1zyydf/hub/main/tower%20of%20easy", true))()
+elseif game.PlaceId == 7896264844 then -- collect all markers
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/kl1zyydf/hub/main/find%20all%20markers", true))()
+elseif game.PlaceId == 1962086868 then -- tower of hell
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/kl1zyydf/hub/main/tower%20of%20hell", true))()
+elseif game.PlaceId == 7256524608 then -- streaming simulator
+    loadstring(game:HttpGet("https://github.com/kl1zyydf/hub/blob/main/streaming%20simulator", true))()
+end
