@@ -1,0 +1,164 @@
+-- // LIBRARY SETTINGS // --
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("XZ HUB", "GrapeTheme")
+
+-- // TABS // --
+local Tab = Window:NewTab("Main")
+local Tab2 = Window:NewTab("Misc")
+local Tab3 = Window:NewTab("Hub")
+
+
+-- // SECTIONS // --
+local S = Tab:NewSection("Main")
+local babaji2 = Tab2:NewSection("Misc")
+local babaji3 = Tab3:NewSection("Updates Log")
+local babaji4 = Tab3:NewSection("Credits")
+
+
+-- // MAIN // --
+S:NewButton("spawn super lucky block", "soon..", function()
+        replicatedstorage.SpawnSuperBlock:FireServer()
+end)
+
+S:NewButton("spawn diamond lucky block", "soon..", function()
+        replicatedstorage.SpawnDiamondBlock:FireServer()
+end)
+
+S:NewButton("spawn rainbow block", "soon..", function()
+    replicatedstorage.SpawnRainbowBlock:FireServer()
+end)
+
+S:NewButton("spawn galaxy lucky block", "soon..", function()
+    replicatedstorage.SpawnGalaxyBlock:FireServer()
+end)
+
+S:NewButton("collect all items", "soon..", function()
+    while wait() do
+        game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+        game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+        game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
+        game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+        game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+    end
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- // MISC // --
+babaji2:NewButton("Anti-Cheat", "soon..", function()
+    local reg = getreg()
+ 
+    for i, Function in next, reg do
+        if type(Function) == 'function' then
+            local info = getinfo(Function)
+ 
+            if info.name == 'kick' then
+                if (hookfunction(info.func, function(...)end)) then
+                    print'succesfully hooked kick'
+                else
+                    print'failed to hook kick'
+                end
+            end
+        end
+    end
+    local playerscripts = game:GetService'Players'.LocalPlayer.PlayerScripts
+ 
+    local script1 = playerscripts.LocalScript
+    local script2 = playerscripts.LocalScript2
+ 
+    local script1signal = script1.Changed
+    local script2signal = script2.Changed
+ 
+    for i, connection in next, getconnections(script1signal) do
+        connection:Disable()
+    end
+    for i, connection in next, getconnections(script2signal) do
+        connection:Disable()
+    end
+ 
+    script1:Destroy()
+    script2:Destroy()
+end)
+
+babaji2:NewButton("God mode", "soon..", function()
+    for i,v in pairs(game:GetService("Workspace").tower:GetDescendants()) do
+        if v:IsA("BoolValue") and v.Name == "kills" then
+            v.Parent:Destroy()
+        end
+    end
+end)
+babaji2:NewButton("Anti-Afk", "soon..", function()
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end)
+
+babaji2:NewButton("Anti-Lags", "ButtonInfo", function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/eVHmQQvQ'))()
+end)
+
+babaji2:NewSlider("set speed power", "Soon..", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+babaji2:NewSlider("set jump power", "Soon..", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+-- // HUB // --
+babaji3:NewButton("get logs at prints", "Soon..", function()
+    print("10.04.2022 / Hub have update script select menu")
+    print("12.04.2022 / Script have security")
+    print("14.04.2022 / New hub library")
+end)
+babaji3:NewLabel("10.04.2022 / Hub have update script select menu")
+babaji3:NewLabel("12.04.2022 / Script have security")
+babaji3:NewLabel("14.04.2022 / New hub library")
+
+babaji4:NewButton("copy discord server link", "Soon..", function()
+    if setclipboard then 
+        setclipboard("Kl1zyy#0666")
+    elseif toClipboard then 
+        toClipboard("Kl1zyy#0666")
+    end
+end)
+babaji4:NewLabel("Hub scripts by: Kl1zyy#0666")
+babaji4:NewLabel("Hub ideas: [XZ] Happy Gamer#6735")
+babaji4:NewLabel("Hub manager: кирик)#0324")
+babaji4:NewLabel("Hub pastebin: https://pastebin.com/dZ6KXWFz")
