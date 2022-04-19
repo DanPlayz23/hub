@@ -1,0 +1,178 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("XZ Hub", "GrapeTheme")
+
+-- // Tabs //
+local zxcTabe = Window:NewTab("Main")
+local babajip = Window:NewTab("Misc")
+local lid = Window:NewTab("Hub")
+
+
+local babaji2 = babajip:NewSection("Player")
+local l = lid:NewSection("Updates")
+local S = lid:NewSection("Cretis")
+local a = zxcTabe:NewSection("main")
+
+
+
+
+
+a:NewDropdown("Op gun", "you gun have a op", {"M9", "AK-47", "Remington 870"}, function(v)
+    local module = nil
+    if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(v) then
+    module = require(game:GetService("Players").LocalPlayer.Backpack[v].GunStates)
+    elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(v) then
+        module = require(game:GetService("Players").LocalPlayer.character[v].GunStates)
+    end
+    if module == nil then
+        module["MaxAmmo"] = math.huge
+        module["CurrentAmmo"] = math.huge
+        module["StoredAmmo"] = math.huge
+        module["FireRate"] = 0.00001
+        module["Range"] = math.huge
+        module["Bullets"] = 10
+        module["ReloadTime"] = 0.00000000001
+        module["AutoFire"] = true
+    end
+end)
+
+a:NewDropdown("Have gun", "gived you gun", {"M9", "AK-47", "Remington 870"}, function(v)
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+    local event = game:GetService("Workspace").Remote.ItemHandler
+    event:InvokeServer(A_1)
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ -- // Misc //
+
+ babaji2:NewButton("Anti-Cheat", "You will not be kicked for cheats!", function()
+    local reg = getreg()
+ 
+    for i, Function in next, reg do
+        if type(Function) == 'function' then
+            local info = getinfo(Function)
+ 
+            if info.name == 'kick' then
+                if (hookfunction(info.func, function(...)end)) then
+                    print'succesfully hooked kick'
+                else
+                    print'failed to hook kick'
+                end
+            end
+        end
+    end
+    local playerscripts = game:GetService'Players'.LocalPlayer.PlayerScripts
+ 
+    local script1 = playerscripts.LocalScript
+    local script2 = playerscripts.LocalScript2
+ 
+    local script1signal = script1.Changed
+    local script2signal = script2.Changed
+ 
+    for i, connection in next, getconnections(script1signal) do
+        connection:Disable()
+    end
+    for i, connection in next, getconnections(script2signal) do
+        connection:Disable()
+    end
+ 
+    script1:Destroy()
+    script2:Destroy()
+end)
+
+babaji2:NewButton("God mode", "You health up to infinity", function()
+    for i,v in pairs(game:GetService("Workspace").tower:GetDescendants()) do
+        if v:IsA("BoolValue") and v.Name == "kills" then
+            v.Parent:Destroy()
+        end
+    end
+end)
+babaji2:NewButton("Anti-Afk", "your has not kicked of 20 minutes afk", function()
+    local vu = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    wait(1)
+    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+    end)
+end)
+
+babaji2:NewButton("reset speed + jump power", "your jump power and run speed will be reset to zero", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 32
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+end)
+
+babaji2:NewSlider("set speed power", "running speed will be upgraded to your mode", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+babaji2:NewSlider("set jump power", "jump power will be upgraded to your mode", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+S:NewButton("print logs", "soon..", function()
+    print("10.04.2022 | Hub have update script select menu")
+    print("12.04.2022 | Script have security")
+    print("13.04.2022 | Anti cheat has added")
+    print("14.04.2022 | Hub library updated")
+    print("14.04.2022 | Hub Blocked by github")
+    print("15.04.2022 | hub has been rewritten")
+    print("15.04.2022 | added key system")
+end)
+
+S:NewButton("copy logs", "update logs copied to your clipboard", function()
+    if setclipboard then 
+        setclipboard("Kl1zyy#0666")
+    elseif toClipboard then 
+        toClipboard("10.04.2022 | Hub have update script select menu        12.04.2022 | Script have security        13.04.2022 | Anti cheat has added        14.04.2022 | Hub library updated        14.04.2022 | Hub Blocked by github        15.04.2022 | hub has been rewritten        15.04.2022 | added key system")
+    end
+end)
+
+
+S:NewLabel("10.04.2022 | Hub have update script select menu")
+S:NewLabel("12.04.2022 | Script have security")
+S:NewLabel("13.04.2022 | Anti cheat has added")
+S:NewLabel("14.04.2022 | Hub library updated")
+S:NewLabel("14.04.2022 | Hub Blocked by github")
+S:NewLabel("15.04.2022 | hub has been rewritten")
+S:NewLabel("15.04.2022 | added key system")
+
+l:NewButton("Copy all credits", "copied all credits to clipboard", function()
+    if setclipboard then 
+        setclipboard("Kl1zyy#0666")
+    elseif toClipboard then 
+        toClipboard("Hub coders: kl1zyy#0666 , IzaKylezz#9802 , Hub manager: [XZ] Happy Gamer#6735 , hub testers: [XZ] Happy Gamer#6735, кирик)#0324, kl1zyy#0666")
+        end
+end)
+
+l:NewLabel("Coders: Kl1zyy#0666 , IzaKylezz#9802")
+l:NewLabel("Manager: [XZ] Happy Gamer#6735")
+l:NewLabel("testers: [XZ] Happy Gamer#6735, кирик)#0324, kl1zyy#0666")
