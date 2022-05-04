@@ -1,0 +1,19 @@
+local Games = {
+    [] = ""; -- prison life (1)
+    [212441234] = ""; -- legends of speed (3)
+    [212441234] = ""; -- ninja legends (4)
+    [212441234] = ""; -- lucky blocks (5)
+    [212441234] = ""; -- spotify island (6)
+    [212441234] = ""; -- Collect all markers (7)
+    [212441234] = ""; -- Tower of hell (8)
+    [212441234] = ""; -- Tower of easy (9)
+    [212441234] = ""; -- Unlimited Upgrade Simulator (10)
+    [212441234] = ""; --  (11)
+    [212441234] = ""; --  (12)
+    [212441234] = ""; --  (13)
+}
+
+local Supported = Games[game.PlaceId] or false
+if Supported ~= false then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/kl1zyydf/hub/main/' .. Supported))()
+end
