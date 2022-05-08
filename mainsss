@@ -1,6 +1,6 @@
 local Games = {
     [155615604] = "prison%20life"; -- prison life (1)
-    [212441234] = "speed"; -- legends of speed (3)
+    [3101667897] = "speed"; -- legends of speed (3)
     [3956818381] = "ninja%20legends"; -- ninja legends (4)
     [212441234] = ""; -- lucky blocks (5)
     [8209480473] = "spotify%20land"; -- spotify island (6)
